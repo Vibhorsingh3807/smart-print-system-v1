@@ -1,0 +1,91 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  passwordHash  String
+  fullName      String
+  rollNumber    String?        @unique
+  role          String         @default("STUDENT")
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  printJobs     PrintJob[]
+  notifications Notification[]
+  auditLogs     AuditLog[]
+}
+
+model Printer {
+  id             String     @id @default(uuid())
+  name           String     
+  displayName    String     
+  status         String     @default("READY")
+  supportsColor  Boolean    @default(false)
+  supportsA3     Boolean    @default(false)
+  supportsA4     Boolean    @default(true)
+  supportsDuplex Boolean    @default(true)
+  location       String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  printJobs      PrintJob[]
+}
+
+model PrintJob {
+  id               String   @id @default(uuid())
+  jobId            String   @unique @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  printerId        String?
+  printer          Printer? @relation(fields: [printerId], references: [id])
+  
+  originalFilename String
+  storedFilename   String
+  fileSize         Int
+  pageCount        Int      @default(1)
+  
+  paperSize        String   @default("A4")
+  orientation      String   @default("PORTRAIT")
+  colorMode        String   @default("BW")
+  duplex           String   @default("SINGLE")
+  copies           Int      @default(1)
+  pageRange        String?  @default("all")
+  
+  paymentMethod    String   @default("CASH") // ONLINE or CASH
+  isPaid           Boolean  @default(false)
+
+  cost             Float
+  status           String   @default("WAITING") // WAITING, QUEUED, PRINTING, COMPLETED, READY_TO_COLLECT, REJECTED
+  rejectionReason  String?
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action    String
+  details   String?
+  ipAddress String?
+  createdAt DateTime @default(now())
+}

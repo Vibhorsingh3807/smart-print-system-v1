@@ -1,0 +1,29 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+build/
+
+# Environment files
+.env
+**/.env
+!.env.example
+**/.env.example
+
+# Local SQLite Database & uploads
+dev.db
+*.db
+backend/dev.db
+backend/uploads/temp/*
+!backend/uploads/temp/.gitkeep
+print-agent/temp_downloads/*
+!print-agent/temp_downloads/.gitkeep
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
