@@ -100,6 +100,15 @@ export const LoginPage: React.FC = () => {
                 Create Account
               </Link>
             </p>
+            <div className="mt-4 flex items-center justify-center gap-3 text-[11px] text-slate-500 flex-wrap">
+              <Link to="/privacy" className="hover:text-slate-300 transition">Privacy</Link>
+              <span>•</span>
+              <Link to="/terms" className="hover:text-slate-300 transition">Terms</Link>
+              <span>•</span>
+              <Link to="/refund-policy" className="hover:text-slate-300 transition">Refunds</Link>
+              <span>•</span>
+              <Link to="/contact" className="hover:text-slate-300 transition">Contact Us</Link>
+            </div>
           </div>
         </div>
       </div>

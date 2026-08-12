@@ -10,6 +10,11 @@ import { TrackJobPage } from './pages/TrackJobPage.js';
 import { HistoryPage } from './pages/HistoryPage.js';
 import { ProfilePage } from './pages/ProfilePage.js';
 
+import { PrivacyPage } from './pages/policies/PrivacyPage.js';
+import { TermsPage } from './pages/policies/TermsPage.js';
+import { RefundPolicyPage } from './pages/policies/RefundPolicyPage.js';
+import { ContactPage } from './pages/policies/ContactPage.js';
+
 const queryClient = new QueryClient();
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -33,6 +38,10 @@ export const App: React.FC = () => {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/refund-policy" element={<RefundPolicyPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route
               path="/"
               element={

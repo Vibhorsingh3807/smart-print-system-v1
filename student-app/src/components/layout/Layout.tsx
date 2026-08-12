@@ -27,14 +27,24 @@ export const Layout: React.FC = () => {
         </div>
       </div>
 
-      {/* Footer Team Credits */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-400">
-        <p className="flex items-center justify-center gap-1 flex-wrap">
-          Developed with <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline animate-bounce" /> by{' '}
-          <strong className="text-slate-200">Tanishq, Tanmay, Vibhor & Shashwat</strong> for{' '}
-          <span className="text-indigo-400 font-bold">SRMIST</span> —{' '}
-          <span className="italic text-purple-400">Vibecoded to reality</span>
-        </p>
+      {/* Footer Team Credits & Policy Links */}
+      <footer className="border-t border-slate-900 bg-slate-950 py-4 px-6 text-center text-xs text-slate-400">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="flex items-center justify-center gap-1 flex-wrap">
+            Developed with <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline animate-bounce" /> by{' '}
+            <strong className="text-slate-200">Tanishq, Tanmay, Vibhor & Shashwat</strong> for{' '}
+            <span className="text-indigo-400 font-bold">SRMIST</span>
+          </p>
+          <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap justify-center">
+            <a href="/privacy" className="hover:text-indigo-400 transition">Privacy Policy</a>
+            <span>•</span>
+            <a href="/terms" className="hover:text-indigo-400 transition">Terms of Service</a>
+            <span>•</span>
+            <a href="/refund-policy" className="hover:text-indigo-400 transition">Refund Policy</a>
+            <span>•</span>
+            <a href="/contact" className="hover:text-indigo-400 transition">Contact Us</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
