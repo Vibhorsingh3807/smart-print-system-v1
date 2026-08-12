@@ -4,8 +4,8 @@ import Razorpay from 'razorpay';
 import { AuthRequest } from '../middleware/auth.middleware.js';
 import { AppError } from '../middleware/error.middleware.js';
 import { CONFIG } from '../config/index.js';
-import { prisma } from '../lib/prisma.js';
-import { getIO } from '../socket.js';
+import { prisma } from '../utils/prisma.js';
+import { getIO } from '../socket/index.js';
 import { JobStatus } from '../types/enums.js';
 
 // Initialize Razorpay client
