@@ -4,13 +4,10 @@ import { authenticateToken } from '../middleware/auth.middleware.js';
 
 const router = Router();
 
-// Require authentication for payment operations
-router.use(authenticateToken);
-
 // STEP 1: Create Razorpay order
-router.post('/create-order', createOrder);
+router.post('/create-order', authenticateToken, createOrder);
 
 // STEP 3: Verify Razorpay payment signature
-router.post('/verify-payment', verifyPayment);
+router.post('/verify-payment', authenticateToken, verifyPayment);
 
 export default router;
