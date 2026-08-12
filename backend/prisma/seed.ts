@@ -4,9 +4,18 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting database seed...');
-
   const customPasswordHash = await bcrypt.hash('vibhu12345', 10);
+
+  // Migrate legacy seed emails if present to prevent unique constraint conflicts
+  await prisma.user.updateMany({
+    where: { email: 'admin@srmprint.ac.in' },
+    data: { email: 'admin@printhelper.ac.in' },
+  });
+
+  await prisma.user.updateMany({
+    where: { email: 'student@srmprint.ac.in' },
+    data: { email: 'student@printhelper.ac.in' },
+  });
 
   // Vibhor Admin User
   const vibhorAdmin = await prisma.user.upsert({
