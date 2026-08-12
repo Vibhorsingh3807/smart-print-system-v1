@@ -127,10 +127,11 @@ export const submitJob = async (req: AuthRequest, res: Response, next: NextFunct
       data: { jobs: createdJobs },
     });
   } catch (error) {
-    if (req.files && Array.isArray(req.files)) {
-      req.files.forEach((f) => deleteFileSafely(f.path));
-    } else if (req.file) {
-      deleteFileSafely(req.file.path);
+    const reqAny = req as any;
+    if (reqAny.files && Array.isArray(reqAny.files)) {
+      reqAny.files.forEach((f: any) => deleteFileSafely(f.path));
+    } else if (reqAny.file) {
+      deleteFileSafely(reqAny.file.path);
     }
     next(error);
   }
