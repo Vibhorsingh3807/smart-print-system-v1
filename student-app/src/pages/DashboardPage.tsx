@@ -122,15 +122,86 @@ export const DashboardPage: React.FC = () => {
 
       if (res.data.success) {
         if (selectedMethod === 'ONLINE') {
-          setShowPaymentModal(true);
-          setPaymentStep('PROCESSING');
-          setTimeout(() => {
-            setPaymentStep('SUCCESS');
-            setTimeout(() => {
-              setShowPaymentModal(false);
-              navigate('/track');
-            }, 1800);
-          }, 1500);
+          const createdJobs = res.data.data.jobs || [];
+          const totalAmount = createdJobs.reduce((sum: number, j: any) => sum + (j.cost || 0), 0) || estimatedCost || 2.0;
+          const mainJobId = createdJobs[0]?.id;
+
+          try {
+            // STEP 1: Backend - Create Order
+            const orderRes = await api.post('/payments/create-order', {
+              amount: totalAmount,
+              currency: 'INR',
+              jobId: mainJobId,
+            });
+
+            const orderData = orderRes.data.data;
+
+            // STEP 2: Frontend - Open Razorpay Modal
+            const options = {
+              key: import.meta.env.VITE_RAZORPAY_KEY_ID || orderData.keyId || 'rzp_test_TOxIcmh98AiASe',
+              amount: orderData.amount, // in paise
+              currency: orderData.currency || 'INR',
+              name: 'SRM Smart Print System',
+              description: `Print Payment - ${createdJobs.length} Document(s)`,
+              order_id: orderData.orderId,
+              handler: async function (response: any) {
+                setShowPaymentModal(true);
+                setPaymentStep('PROCESSING');
+                try {
+                  // STEP 3: Backend - Verify Signature
+                  await api.post('/payments/verify-payment', {
+                    razorpay_payment_id: response.razorpay_payment_id,
+                    razorpay_order_id: response.razorpay_order_id,
+                    razorpay_signature: response.razorpay_signature,
+                    jobId: mainJobId,
+                  });
+                  setPaymentStep('SUCCESS');
+                  setTimeout(() => {
+                    setShowPaymentModal(false);
+                    navigate('/track');
+                  }, 1800);
+                } catch (verifyErr: any) {
+                  setShowPaymentModal(false);
+                  setError(verifyErr.response?.data?.message || 'Payment verification failed.');
+                }
+              },
+              prefill: {
+                name: user?.fullName || '',
+                email: user?.email || '',
+              },
+              theme: {
+                color: '#4f46e5',
+              },
+              modal: {
+                ondismiss: function () {
+                  setLoading(false);
+                  setShowPaymentModal(false);
+                  setError('Razorpay payment cancelled by user.');
+                },
+              },
+            };
+
+            const triggerCheckout = () => {
+              const rzp = new (window as any).Razorpay(options);
+              rzp.on('payment.failed', function (response: any) {
+                setShowPaymentModal(false);
+                setError(`Payment Failed: ${response.error?.description || 'Transaction declined'}`);
+              });
+              rzp.open();
+            };
+
+            if (typeof (window as any).Razorpay !== 'undefined') {
+              triggerCheckout();
+            } else {
+              const script = document.createElement('script');
+              script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+              script.async = true;
+              script.onload = triggerCheckout;
+              document.body.appendChild(script);
+            }
+          } catch (orderErr: any) {
+            setError(orderErr.response?.data?.message || 'Failed to create Razorpay payment order');
+          }
         } else {
           navigate('/track');
         }
