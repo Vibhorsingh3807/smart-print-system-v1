@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => {
         </div>
         <div>
           <span className="font-extrabold text-lg text-white tracking-tight">
-            SRM<span className="gradient-text-admin">STATIONERY</span>
+            PRINT<span className="gradient-text-admin">HELPER ADMIN</span>
           </span>
           <span className="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
             Staff Control Panel

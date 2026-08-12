@@ -25,13 +25,13 @@ async function main() {
 
   // Standard Admin User
   const defaultAdmin = await prisma.user.upsert({
-    where: { email: 'admin@srmprint.ac.in' },
+    where: { email: 'admin@printhelper.ac.in' },
     update: {
       passwordHash: customPasswordHash,
       role: 'ADMIN',
     },
     create: {
-      email: 'admin@srmprint.ac.in',
+      email: 'admin@printhelper.ac.in',
       fullName: 'Stationery Staff Admin',
       passwordHash: customPasswordHash,
       role: 'ADMIN',
@@ -56,13 +56,13 @@ async function main() {
 
   // Default Student User
   const defaultStudent = await prisma.user.upsert({
-    where: { email: 'student@srmprint.ac.in' },
+    where: { email: 'student@printhelper.ac.in' },
     update: {
       passwordHash: customPasswordHash,
       role: 'STUDENT',
     },
     create: {
-      email: 'student@srmprint.ac.in',
+      email: 'student@printhelper.ac.in',
       fullName: 'Rahul Sharma',
       rollNumber: 'RA2111003010001',
       passwordHash: customPasswordHash,
@@ -108,7 +108,7 @@ async function main() {
   console.log('==============================================');
   console.log('👑 Admin (Vibhor):   vibhor.singh0308@gmail.com | Password: vibhu12345');
   console.log('🎓 Student (Vibhor): vibhor.student@gmail.com   | Password: vibhu12345');
-  console.log('🎓 Student (Default): student@srmprint.ac.in     | Password: vibhu12345');
+  console.log('🎓 Student (Default): student@printhelper.ac.in | Password: vibhu12345');
   console.log('==============================================');
 }
 

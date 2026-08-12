@@ -1,4 +1,4 @@
-# SRM Print Helper - 1-Click Demo Launcher Directory
+# Print Helper - 1-Click Demo Launcher Directory
 
 This directory contains automated execution scripts to launch the complete system (Backend API, Student App, Admin Control Panel, and Desktop Print Agent) with a single click.
 
@@ -14,4 +14,4 @@ This directory contains automated execution scripts to launch the complete syste
 - **Admin**: `vibhor.singh0308@gmail.com` | Password: `vibhu12345`
 - **Student**: `vibhor.student@gmail.com` | Password: `vibhu12345`
 
-Developed with ❤️ by **Tanishq, Tanmay, Vibhor & Shashwat** for **SRMIST** — *Vibecoded to reality*.
+Developed with ❤️ by **Tanishq, Tanmay, Vibhor & Shashwat** for **Print Helper** — *Vibecoded to reality*.

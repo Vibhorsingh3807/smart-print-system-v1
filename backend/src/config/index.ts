@@ -13,7 +13,7 @@ export const CONFIG = {
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN || '7d',
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET || 'fallback-refresh-jwt-secret-key-2026',
   JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN || '30d',
-  AGENT_API_KEY: process.env.AGENT_API_KEY || 'srm-print-agent-secret-token-key',
+  AGENT_API_KEY: process.env.AGENT_API_KEY || 'print-helper-agent-secret-token-key',
   UPLOAD_DIR: path.resolve(process.env.UPLOAD_DIR || './uploads/temp'),
   MAX_FILE_SIZE_MB: parseInt(process.env.MAX_FILE_SIZE_MB || '50', 10),
   RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID || 'rzp_test_TOxIcmh98AiASe',

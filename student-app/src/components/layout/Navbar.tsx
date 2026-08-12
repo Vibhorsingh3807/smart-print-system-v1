@@ -56,7 +56,7 @@ export const Navbar: React.FC = () => {
         </div>
         <div>
           <span className="font-extrabold text-lg text-white tracking-tight">
-            SRM<span className="gradient-text">PRINT</span>
+            PRINT<span className="gradient-text">HELPER</span>
           </span>
           <span className="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-medium">
             Student Portal

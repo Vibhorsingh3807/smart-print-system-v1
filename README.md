@@ -1,8 +1,8 @@
-# SRM Print Management System (Smart Campus Print Portal)
+# Print Helper System (Smart Campus Print Portal)
 
 A production-grade, multi-application smart print management platform for campus stationery shops. Built with React 19, Vite, TypeScript, Express.js, Prisma ORM, Socket.IO, and a desktop Print Agent.
 
-Developed with ❤️ by **Tanishq, Tanmay, Vibhor & Shashwat** for **SRMIST** — *Vibecoded to reality*.
+Developed with ❤️ by **Tanishq, Tanmay, Vibhor & Shashwat** for **Print Helper** — *Vibecoded to reality*.
 
 ---
 

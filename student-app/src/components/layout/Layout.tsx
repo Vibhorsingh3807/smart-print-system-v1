@@ -33,7 +33,7 @@ export const Layout: React.FC = () => {
           <p className="flex items-center justify-center gap-1 flex-wrap">
             Developed with <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500 inline animate-bounce" /> by{' '}
             <strong className="text-slate-200">Tanishq, Tanmay, Vibhor & Shashwat</strong> for{' '}
-            <span className="text-indigo-400 font-bold">SRMIST</span>
+            <span className="text-indigo-400 font-bold">Campus Print</span>
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500 flex-wrap justify-center">
             <a href="/privacy" className="hover:text-indigo-400 transition">Privacy Policy</a>

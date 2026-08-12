@@ -1,5 +1,5 @@
 {
-  "name": "srm-print-backend",
+  "name": "print-helper-backend",
   "version": "1.0.0",
   "description": "Smart College Print Management System - Backend API",
   "main": "dist/server.js",

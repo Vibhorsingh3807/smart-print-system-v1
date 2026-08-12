@@ -67,7 +67,7 @@ const runQueueCheck = async () => {
 const startPrintAgentService = async () => {
   console.log(`
 ┌──────────────────────────────────────────────────────────┐
-│   🖨️  SRM PRINT MANAGEMENT SYSTEM - DESKTOP PRINT AGENT  │
+│   🖨️  PRINT HELPER SYSTEM - DESKTOP PRINT AGENT           │
 └──────────────────────────────────────────────────────────┘
 `);
   console.log(`🔗 Target Backend API: ${CONFIG.BACKEND_URL}`);

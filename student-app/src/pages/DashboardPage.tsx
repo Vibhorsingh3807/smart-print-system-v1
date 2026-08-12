@@ -141,7 +141,7 @@ export const DashboardPage: React.FC = () => {
               key: import.meta.env.VITE_RAZORPAY_KEY_ID || orderData.keyId || 'rzp_test_TOxIcmh98AiASe',
               amount: orderData.amount, // in paise
               currency: orderData.currency || 'INR',
-              name: 'SRM Smart Print System',
+              name: 'Print Helper System',
               description: `Print Payment - ${createdJobs.length} Document(s)`,
               order_id: orderData.orderId,
               handler: async function (response: any) {
@@ -502,7 +502,7 @@ export const DashboardPage: React.FC = () => {
                 <div className="animate-spin h-12 w-12 border-4 border-emerald-500 border-t-transparent rounded-full mx-auto" />
                 <div>
                   <h3 className="text-base font-bold text-white">Processing Instant Payment...</h3>
-                  <p className="text-xs text-slate-400 mt-1">Connecting to SRM Campus UPI Gateway (₹{estimatedCost.toFixed(2)})</p>
+                  <p className="text-xs text-slate-400 mt-1">Connecting to Print Helper Campus UPI Gateway (₹{estimatedCost.toFixed(2)})</p>
                 </div>
               </>
             ) : (

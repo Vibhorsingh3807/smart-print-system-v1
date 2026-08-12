@@ -1,4 +1,4 @@
-# SRM Print Helper - Backend API Service
+# Print Helper - Backend API Service
 
 Production-grade Express.js & TypeScript API server with Prisma ORM (PostgreSQL), Multer file handling, JWT authentication, and Socket.IO real-time print queue events.
 

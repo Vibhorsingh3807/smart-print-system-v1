@@ -1,5 +1,5 @@
 {
-  "name": "srm-print-agent",
+  "name": "print-helper-agent",
   "version": "1.0.0",
   "description": "Smart College Print Management System - Stationery Desktop Print Agent",
   "main": "dist/index.js",

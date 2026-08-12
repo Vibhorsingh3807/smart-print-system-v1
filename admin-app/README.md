@@ -1,4 +1,4 @@
-# SRM Print Helper - Admin Control Panel
+# Print Helper - Admin Control Panel
 
 React 19 + Vite + TypeScript administration dashboard for stationery counter staff. Enables live queue management, manual job status overrides, hardware printer discovery/registration, and financial analytics.
 

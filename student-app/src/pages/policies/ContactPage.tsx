@@ -7,7 +7,7 @@ export const ContactPage: React.FC = () => {
     <div className="min-h-screen bg-slate-950 text-slate-300 p-6 md:p-12">
       <div className="max-w-4xl mx-auto glass-card p-8 rounded-2xl border border-slate-800">
         <Link to="/" className="inline-flex items-center gap-2 text-indigo-400 text-xs font-semibold mb-6 hover:text-indigo-300">
-          <ArrowLeft className="h-4 w-4" /> Back to SRM Print System
+          <ArrowLeft className="h-4 w-4" /> Back to Print Helper System
         </Link>
         <div className="flex items-center gap-3 mb-6">
           <Mail className="h-8 w-8 text-indigo-500" />
@@ -22,9 +22,9 @@ export const ContactPage: React.FC = () => {
               <div>
                 <h3 className="font-bold text-white text-xs">Campus Address</h3>
                 <p className="text-slate-400 mt-1">
-                  SRM Smart Print Center, UB Tech Park Ground Floor,<br />
-                  SRM Institute of Science and Technology,<br />
-                  Kattankulathur, Chengalpattu, Tamil Nadu - 603203
+                  Print Helper Center, Main Tech Park Ground Floor,<br />
+                  Campus Main Block,<br />
+                  Tech Campus - 603203
                 </p>
               </div>
             </div>
@@ -33,7 +33,7 @@ export const ContactPage: React.FC = () => {
               <Mail className="h-5 w-5 text-indigo-400 shrink-0 mt-0.5" />
               <div>
                 <h3 className="font-bold text-white text-xs">Email Support</h3>
-                <p className="text-slate-400 mt-1">support@srmprint.ac.in</p>
+                <p className="text-slate-400 mt-1">support@printhelper.ac.in</p>
                 <p className="text-slate-500 text-[10px] mt-0.5">Responses within 24 hours</p>
               </div>
             </div>

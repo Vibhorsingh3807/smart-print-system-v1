@@ -1,10 +1,10 @@
-# SRM Print Management System - PowerShell Launcher
+# Print Helper Management System - PowerShell Launcher
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $rootDir = Resolve-Path "$scriptDir\.."
 $nodeBin = "C:\Users\vibho\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin"
 
 Write-Host "========================================================" -ForegroundColor Cyan
-Write-Host "   SRM PRINT MANAGEMENT SYSTEM - DEMO LAUNCHER" -ForegroundColor Yellow
+Write-Host "   PRINT HELPER MANAGEMENT SYSTEM - DEMO LAUNCHER" -ForegroundColor Yellow
 Write-Host "========================================================" -ForegroundColor Cyan
 
 # 1. Backend API

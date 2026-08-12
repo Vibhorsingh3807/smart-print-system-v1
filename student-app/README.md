@@ -1,4 +1,4 @@
-# SRM Print Helper - Student Frontend
+# Print Helper - Student Frontend
 
 React 19 + Vite + TypeScript web application for students to upload documents, configure print options (Paper size, Orientation, Color mode, Duplex, Copies), preview PDFs, estimate pricing live, and track real-time print status via WebSocket.
 
