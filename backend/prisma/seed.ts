@@ -6,16 +6,32 @@ const prisma = new PrismaClient();
 async function main() {
   const customPasswordHash = await bcrypt.hash('vibhu12345', 10);
 
-  // Migrate legacy seed emails if present to prevent unique constraint conflicts
-  await prisma.user.updateMany({
-    where: { email: 'admin@srmprint.ac.in' },
-    data: { email: 'admin@printhelper.ac.in' },
-  });
+  // Safely handle legacy seed email migration without unique constraint collisions
+  try {
+    const existingNewAdmin = await prisma.user.findUnique({ where: { email: 'admin@printhelper.ac.in' } });
+    const existingOldAdmin = await prisma.user.findUnique({ where: { email: 'admin@srmprint.ac.in' } });
+    if (existingOldAdmin && !existingNewAdmin) {
+      await prisma.user.update({
+        where: { email: 'admin@srmprint.ac.in' },
+        data: { email: 'admin@printhelper.ac.in' },
+      });
+    } else if (existingOldAdmin && existingNewAdmin) {
+      await prisma.user.delete({ where: { email: 'admin@srmprint.ac.in' } });
+    }
+  } catch (_err) {}
 
-  await prisma.user.updateMany({
-    where: { email: 'student@srmprint.ac.in' },
-    data: { email: 'student@printhelper.ac.in' },
-  });
+  try {
+    const existingNewStudent = await prisma.user.findUnique({ where: { email: 'student@printhelper.ac.in' } });
+    const existingOldStudent = await prisma.user.findUnique({ where: { email: 'student@srmprint.ac.in' } });
+    if (existingOldStudent && !existingNewStudent) {
+      await prisma.user.update({
+        where: { email: 'student@srmprint.ac.in' },
+        data: { email: 'student@printhelper.ac.in' },
+      });
+    } else if (existingOldStudent && existingNewStudent) {
+      await prisma.user.delete({ where: { email: 'student@srmprint.ac.in' } });
+    }
+  } catch (_err) {}
 
   // Vibhor Admin User
   const vibhorAdmin = await prisma.user.upsert({
