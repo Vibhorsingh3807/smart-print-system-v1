@@ -2,11 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../lib/axios.js';
+import { useAuth } from '../context/AuthContext.js';
 import { UploadCloud, FileText, CheckCircle2, DollarSign, Printer, Sliders, AlertCircle, Trash2, CreditCard, Banknote, ShieldCheck } from 'lucide-react';
 import { PaperSize, Orientation, ColorMode, DuplexMode, PaymentMethod } from '../types/index.js';
 
 export const DashboardPage: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   // Multiple Files State
   const [files, setFiles] = useState<File[]>([]);
@@ -22,7 +24,7 @@ export const DashboardPage: React.FC = () => {
   const [pageRange, setPageRange] = useState<string>('all');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('ONLINE');
 
-  // Simulated Payment Gateway Modal
+  // Payment Gateway Modal
   const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
   const [paymentStep, setPaymentStep] = useState<'PROCESSING' | 'SUCCESS'>('PROCESSING');
 

@@ -16,4 +16,6 @@ export const CONFIG = {
   AGENT_API_KEY: process.env.AGENT_API_KEY || 'srm-print-agent-secret-token-key',
   UPLOAD_DIR: path.resolve(process.env.UPLOAD_DIR || './uploads/temp'),
   MAX_FILE_SIZE_MB: parseInt(process.env.MAX_FILE_SIZE_MB || '50', 10),
+  RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID || 'rzp_test_TOxIcmh98AiASe',
+  RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET || 'k9fI9zGdBpL3mDtxN3Hf1D4B',
 };

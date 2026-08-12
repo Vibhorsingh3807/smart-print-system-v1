@@ -6,6 +6,8 @@ import { CONFIG } from './config/index.js';
 import routes from './routes/index.js';
 import { errorHandler } from './middleware/error.middleware.js';
 
+import paymentRoutes from './routes/payment.routes.js';
+
 export const createApp = (): Express => {
   const app = express();
 
@@ -37,6 +39,9 @@ export const createApp = (): Express => {
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
   });
+
+  // Alias endpoints for root /api/create-order & /api/verify-payment
+  app.use('/api', paymentRoutes);
 
   // Mount API V1 routes
   app.use('/api/v1', routes);
